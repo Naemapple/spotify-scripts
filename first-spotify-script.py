@@ -45,10 +45,10 @@ def get_recent_listening_history(num_tracks):
     """
     unique_tracks = []
     seen_tracks = set()
-    limit = 10
+    limit = num_tracks
 
     while len(unique_tracks) < num_tracks and limit <= 50:
-        
+        print(limit)
         # Get the current user's recently played tracks
         results = sp.current_user_recently_played(limit=limit)
     
@@ -69,7 +69,7 @@ def get_recent_listening_history(num_tracks):
             if track_id not in seen_tracks:
                 seen_tracks.add(track_id)
                 unique_tracks.append(f"{track_name} by {artist_name}")
-        limit += 10
+        limit += 1
 
     # Print the unique track information
     print("Your Most Recent Spotify Tracks:\n")
@@ -81,4 +81,4 @@ def get_recent_listening_history(num_tracks):
 # ===== MAIN =====
 if __name__ == "__main__":
 
-    get_recent_listening_history(10)
+    get_recent_listening_history(5)
