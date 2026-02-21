@@ -1,1 +1,2 @@
-This is a Spotify project to help me learn more about python and beginner programming
+This is a Spotify project to help me learn more about Python and beginner programming 
+:)
