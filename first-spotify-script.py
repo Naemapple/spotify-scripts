@@ -25,12 +25,12 @@ sp = spotipy.Spotify(auth_manager=auth_manager)
 
 
 # ===== FUNCTION =====
-def get_recent_listening_history(num_tracks):
+def get_recent_unique_history(num_tracks):
     """
     Fetch your recent listening history from Spotify.
     
     Args:
-        num_tracks (int): Number of uniquerecent tracks to retrieve
+        num_tracks (int): Number of unique recent tracks to retrieve
     
     Returns:
         prints list of tracks
@@ -59,16 +59,45 @@ def get_recent_listening_history(num_tracks):
 
             if track_id not in seen_tracks:
                 seen_tracks.add(track_id)
-                unique_tracks.append(f"{track_name} by {artist_name}")
+                unique_tracks.append(track)
         limit += 1
 
     # Print the unique track information
-    print("Your Most Recent Spotify Tracks:\n")
-    print("\n".join(unique_tracks))
+    #print("Your Most Recent Spotify Tracks:\n")
+    #for track in unique_tracks:
+        #print(f"{track['name']} by {track['artists'][0]['name']}")
+
+    return unique_tracks
 
 
 
 # ===== MAIN =====
 if __name__ == "__main__":
 
-    get_recent_listening_history(5)
+    recent_tracks = get_recent_unique_history(5)
+
+    print(recent_tracks[1])
+
+    print(f"\n{'Your Most Recent Spotify Tracks':^135}\n")
+
+    print(f"| {'Track Name':<30} | {'Artist':<20} | {'Album Name':<30} | {'Release Date':<12} |")
+    print("-" * 135)
+
+    for track in recent_tracks:
+        track_name = track['name']
+        artist_name = track['artists'][0]['name']
+        
+        album_name = track['album']['name']
+        release_date = track['album']['release_date']
+
+        # # Get the artist's genres
+        # artist_id = track['artists'][0]['id']
+        # artist_info = sp.artist(artist_id)
+        # genres = ", ".join(artist_info['genres']) if artist_info['genres'] else "N/A"
+
+        print(f"| {track_name:<30} | {artist_name:<20} | {album_name:<30} | {release_date:<12} |")
+
+     
+    
+
+
