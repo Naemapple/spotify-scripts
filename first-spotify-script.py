@@ -76,8 +76,6 @@ if __name__ == "__main__":
 
     recent_tracks = get_recent_unique_history(5)
 
-    print(recent_tracks[1])
-
     print(f"\n{'Your Most Recent Spotify Tracks':^135}\n")
 
     print(f"| {'Track Name':<30} | {'Artist':<20} | {'Album Name':<30} | {'Release Date':<12} |")
