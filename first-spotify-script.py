@@ -8,14 +8,6 @@ import os
 # Load environment variables from the .env file
 load_dotenv()
 
-# Get Spotify API credentials from environment variables
-# To set these up:
-# 1. Go to https://developer.spotify.com/dashboard
-# 2. Log in or create a Spotify account
-# 3. Create a new app to get your Client ID and Client Secret
-# 4. Create a .env file in this directory with:
-#    SPOTIFY_CLIENT_ID=your_id_here
-#    SPOTIFY_CLIENT_SECRET=your_secret_here
 
 CLIENT_ID = os.getenv("SPOTIFY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIFY_CLIENT_SECRET")
